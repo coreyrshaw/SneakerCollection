@@ -1,0 +1,68 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="css/sneaker-styles.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+{{^user}}
+<form action="/login" method="post">
+    <input type="text" placeholder="Username" name="userName" required/>
+    <input type="password" placeholder="Password" name="password" required/>
+    <button type="submit">Login</button>
+</form>
+{{/user}}
+
+{{#user}}
+Welcome, {{name}}!
+<form action="/logout" method="post">
+    <button type="submit">Logout</button>
+</form>
+<br><br>
+
+<div id="banner">
+    <div id="banner-content">
+        This is your banner text, centered and fixed at 800px in width
+    </div>
+</div>
+<div id="main-content">
+    <p>Main page content goes here</p>
+</div>
+
+
+<form action="/add-sneaker" method="post">
+    <input type="text" placeholder="Jordan Model Name" name="jordanModel"/>
+    <select name="jordanModelNumber">
+        <option selected disabled>Jordan Model Number</option>
+        <option value="1">Jordan "1"</option>
+        <option value="2">Jordan "2"</option>
+        <option value="3">Jordan "3"</option>
+        <option value="4">Jordan "4"</option>
+        <option value="5">Jordan "5"</option>
+        <option value="6">Jordan "6"</option>
+        <option value="7">Jordan "7"</option>
+        <option value="8">Jordan "8"</option>
+        <option value="9">Jordan "9"</option>
+        <option value="10">Jordan "10"</option>
+        <option value="11">Jordan "11"</option>
+        <option value="12">Jordan "12"</option>
+    </select>
+    <input type="text" placeholder="Jordan Color " name="jordanColor"/>
+    <input type="number" placeholder="Release Year" name="jordanReleaseYear"/>
+    <input type="number" placeholder="Jordan Value $$" name="jordanPrice"/>
+    <input type="text" placeholder="Add a photo link for your Jordan " name="jordanPhotoLink"/>
+    <button type="submit">Add to List.</button>
+</form>
+
+<div style="position: relative; float: left; width: 100%; padding: 20px;">
+
+</div>
+
+<ol>
+    {{#sneakers}}
+    <li><b>Model:</b>{{model}}{{modelNo}}'s &nbsp<b>ColorWay:</b> {{color}}&nbsp <b>ReleaseYear:</b>{{releaseYear}}&nbsp <b>Price:</b>${{price}}.0 </li>
+    <img src="{{photoLink}}" width="200" height="150"/>
+    {{/sneakers}}
+</ol>
+{{/user}}
+</body>
+</html>
+
