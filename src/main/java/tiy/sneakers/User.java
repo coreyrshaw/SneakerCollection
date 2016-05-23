@@ -8,11 +8,39 @@ import javax.persistence.*;
 public class User {
     @Id
     @GeneratedValue
-    public int id;
+    int id;
     @Column(nullable = false, unique = true)
-    public String name;
+    String name;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Column(nullable = false)
+
     public   String password;
+
+
     public User() {
     }
     public User(String name, String password) {

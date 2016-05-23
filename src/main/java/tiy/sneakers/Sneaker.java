@@ -31,10 +31,15 @@ public class Sneaker {
     @Column(nullable = false)
     boolean coplist;
 
+    @ManyToOne
+    User user;
+
+
     public Sneaker() {
     }
 
-    public Sneaker(String model, int modelNo, String color, int releaseYear,double price,String photoLink, boolean coplist) {
+
+    public Sneaker(String model, int modelNo, String color, int releaseYear,double price,String photoLink, boolean coplist,User user) {
         this.model = model;
         this.modelNo = modelNo;
         this.color= color;
@@ -42,6 +47,7 @@ public class Sneaker {
         this.price=price;
         this.photoLink = photoLink;
         this.coplist = coplist;
+        this.user=user;
     }
 
 

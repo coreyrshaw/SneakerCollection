@@ -6,12 +6,36 @@
 <body>
 <div id="banner">
     <div id="banner-content">
+        <html>
+        <body>
+        {{^user}}
+        <form action="/login" method="post">
+            <input type="text" placeholder="Username" name="userName" required/>
+            <input type="password" placeholder="Password" name="password" required/>
+            <button type="submit">Login</button>
+        </form>
+        {{/user}}
+
+        {{#user}}
+        Welcome, {{name}}!
+        <form action="/logout" method="post">
+            <button type="submit">Logout</button>
+        </form>
+        <br><br>
+
+        ...
+
+        {{/user}}
+        </body>
+        </html>
     </div>
 </div>
 <div id="main-content">
-    <p>Main page content goes here</p>
-    <img src="https://mir-cdn.behance.net/v1/rendition/wip/fs/e5c6403042205.5742ffdeb7607.jpg">
+    <p>Welcome Fellow SneakerHead !!</p>
+
+    <img src="https://mir-cdn.behance.net/v1/rendition/wip/fs/e5c6403042205.5742ffdeb7607.jpg" width="400px"></div>
 </div>
+
 <form action="/add-sneaker" method="post">
     <input type="text" placeholder="Jordan Model Name" name="jordanModel"/>
     <select name="jordanModelNumber">
@@ -57,3 +81,4 @@
 
 </body>
 </html>
+
