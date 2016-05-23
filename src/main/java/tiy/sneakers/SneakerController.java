@@ -15,8 +15,8 @@ public class SneakerController {
    SneakerRepository sneakers;
     
     @RequestMapping(path = "/add-sneaker", method = RequestMethod.POST)
-    public String addSneaker(String jordanModel,int jordanModelNumber, String jordanColor, int jordanReleaseYear, double jordanPrice,String jordanPhotoLink) {
-        Sneaker sneaker = new Sneaker(jordanModel,jordanModelNumber, jordanColor, jordanReleaseYear,jordanPrice,jordanPhotoLink);
+    public String addSneaker(String jordanModel,int jordanModelNumber, String jordanColor, int jordanReleaseYear, double jordanPrice,String jordanPhotoLink, boolean coplist) {
+        Sneaker sneaker = new Sneaker(jordanModel,jordanModelNumber, jordanColor, jordanReleaseYear,jordanPrice,jordanPhotoLink, coplist);
         sneakers.save(sneaker);
         return "redirect:/";
     }
@@ -31,6 +31,27 @@ public class SneakerController {
         }
         model.addAttribute("sneakers", sneakerList);
         return "home";
+    }
+
+    @RequestMapping(path = "/delete", method = RequestMethod.GET)
+    public String deleteSneaker(Model model, Integer sneakerID) {
+        if (sneakerID!= null) {
+            sneakers.delete(sneakerID);
+        }
+
+        return "redirect:/";
+    }
+
+    @RequestMapping(path = "/toggle", method = RequestMethod.GET)
+    public String toggleSneaker(Model model, Integer sneakerID) {
+        if (sneakerID != null) {
+            Sneaker kicks = sneakers.findOne(sneakerID); //calls inside Repository, finding the id.
+            kicks.coplist = !kicks.coplist;
+            sneakers.save(kicks);
+
+        }
+
+        return "redirect:/";
     }
 
 

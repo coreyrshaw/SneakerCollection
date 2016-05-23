@@ -28,16 +28,22 @@ public class Sneaker {
     @Column(nullable = false)
     String  photoLink;
 
+    @Column(nullable = false)
+    boolean coplist;
+
     public Sneaker() {
     }
 
-    public Sneaker(String model, int modelNo, String color, int releaseYear,double price,String photoLink) {
+    public Sneaker(String model, int modelNo, String color, int releaseYear,double price,String photoLink, boolean coplist) {
         this.model = model;
         this.modelNo = modelNo;
         this.color= color;
         this.releaseYear = releaseYear;
         this.price=price;
         this.photoLink = photoLink;
+        this.coplist = coplist;
     }
+
+
 }
 

@@ -1,18 +1,17 @@
 <html>
+
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="css/sneaker-styles.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="banner">
     <div id="banner-content">
-        This is your banner text, centered and fixed at 800px in width
     </div>
 </div>
 <div id="main-content">
     <p>Main page content goes here</p>
+    <img src="https://mir-cdn.behance.net/v1/rendition/wip/fs/e5c6403042205.5742ffdeb7607.jpg">
 </div>
-
-
 <form action="/add-sneaker" method="post">
     <input type="text" placeholder="Jordan Model Name" name="jordanModel"/>
     <select name="jordanModelNumber">
@@ -42,6 +41,16 @@
     {{#sneakers}}
     <li><b>Model:</b>{{model}}{{modelNo}}'s &nbsp<b>ColorWay:</b> {{color}}&nbsp <b>ReleaseYear:</b>{{releaseYear}}&nbsp <b>Price:</b>${{price}}.0 </li>
     <img src="{{photoLink}}" width="200" height="150"/>
+    <li>
+        {{#coplist}}
+        [Copped!!]
+        {{/coplist}}
+            {{^coplist}}
+            [Not-Copped..]
+            {{/coplist}}
+            <a href="/delete?sneakerID={{id}}">delete</a>
+            <a href="/toggle?sneakerID={{id}}">toggle</a>
+    </li>
     {{/sneakers}}
 </ol>
 </div>
