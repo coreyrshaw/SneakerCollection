@@ -9,6 +9,9 @@ public class Sneaker {
     @GeneratedValue
     int id;
 
+    @ManyToOne
+    User user;
+
     @Column(nullable = false)
     String model;
 
@@ -18,26 +21,30 @@ public class Sneaker {
     @Column(nullable = false)
     String color;
 
-
     @Column(nullable = false)
     int releaseYear;
 
     @Column(nullable = false)
-    double  price;
+    double price;
 
     @Column(nullable = false)
-    String  photoLink;
+    boolean copped;
+
+    @Column(nullable = false)
+    String photoLink;
 
     public Sneaker() {
     }
 
-    public Sneaker(String model, int modelNo, String color, int releaseYear,double price,String photoLink) {
+    public Sneaker(String model, int modelNo, String color, int releaseYear, double price, String photoLink, boolean copped,User user) {
         this.model = model;
         this.modelNo = modelNo;
-        this.color= color;
+        this.color = color;
         this.releaseYear = releaseYear;
-        this.price=price;
+        this.price = price;
         this.photoLink = photoLink;
+        this.copped = copped;
+        this.user = user;
     }
-}
 
+}
